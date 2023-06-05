@@ -74,6 +74,7 @@ class BallSprite(GameSprite):
 player_1 = PlayerSprite((30, 150), 'platform.png', 60, 210, 8)
 player_2 = PlayerSprite((30, 150), 'platform.png', 620, 210, 8)
 ball = BallSprite((30, 30), 'ball.png', 40, 80, 4)
+game_over_image = GameSprite((400, 400), 'game_over.png', 900, 700, 100)
 
 font.init()
 font_new = font.SysFont('Arial', 70)
@@ -105,8 +106,11 @@ while game_over == False:
         ball.update(player_2)
 
     else:
+        game_over_image.rect.x = 150
+        game_over_image.rect.y = 50
+        game_over_image.reset()
         lose = font_new.render((player_lose+' lose!'), True, (180, 0, 0))
-        window.blit(lose, (230, 200))
+        window.blit(lose, (180, 320))
 
     display.update()
     clock.tick(FPS)
